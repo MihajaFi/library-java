@@ -8,5 +8,6 @@ CREATE TABLE IF NOT EXISTS author (
 -- Insérer des données dans la table "author"
 INSERT INTO author (id, authorName, sex)
 VALUES 
-  (1, 'John Doe', 'M'),
-  (2, 'Jane Doe', 'F');
+  (1, 'Jodi Picoult', 'M'),
+  (2, 'Monica Hess', 'F'),
+  (3 , 'Eric Manuel' , 'M');
