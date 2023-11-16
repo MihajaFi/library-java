@@ -83,11 +83,40 @@ public class BookCrudOperations implements  CrudOperations<Book> {
 
     @Override
     public Book save(Book toSave) {
-        return null;
+        try {
+            // Établir la connexion (assurez-vous que la connexion est initialisée correctement)
+
+            String query = "INSERT INTO book (type, bookName, pageNumbers, topic, releaseDate, status) VALUES (?, ?, ?, ?, ?, ?) RETURNING *";
+            getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+                preparedStatement.setString(1, toSave.getType());
+                preparedStatement.setString(2, toSave.getBookName());
+                preparedStatement.setInt(3, toSave.getPageNumbers());
+                preparedStatement.setObject(4, toSave.getTopic(), Types.OTHER);
+                preparedStatement.setDate(5, new java.sql.Date(toSave.getReleaseDate().getTime()));
+                preparedStatement.setString(6, toSave.getStatus());
+                 preparedStatement.executeUpdate();
+
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return null;
     }
 
     @Override
     public Book delete(Book toDelete) {
+
+        String sql = "DELETE FROM book WHERE id = ?" ;
+        getConnection() ;
+        try(PreparedStatement preparedStatement =connection.prepareStatement(sql)){
+            preparedStatement.setInt(1 , toDelete.getId());
+            preparedStatement.executeUpdate();
+            System.out.println("Book deleted successfully");
+        } catch (SQLException e) {
+            throw new RuntimeException("error");
+        }
         return null;
     }
 }
