@@ -5,7 +5,7 @@ public enum topic_enum {
 
     @Override
     public String toString() {
-        return name().toUpperCase(); // ou name().toUpperCase() pour majuscules
+        return name().toUpperCase(); 
 
     }
 }
