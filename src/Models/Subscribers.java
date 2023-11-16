@@ -1,15 +1,15 @@
 package Models;
 
-public class Subscribers {
+public class Subscribers extends User {
     private int id ;
     private String name ;
     private String reference ;
 
-    public Subscribers(int id, String name, String reference) {
-        this.id = id;
-        this.name = name;
-        this.reference = reference;
+    public Subscribers(int id, String name , String reference) {
+        super(id, name);
+        this.reference = reference ;
     }
+
 
     public int getId() {
         return id;
