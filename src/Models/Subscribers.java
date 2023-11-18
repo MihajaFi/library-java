@@ -1,21 +1,22 @@
 package Models;
 
-public class Subscribers extends User {
-    private int id ;
+public class Subscribers  {
+    private String id ;
     private String name ;
     private String reference ;
 
-    public Subscribers(int id, String name , String reference) {
-        super(id, name);
+    public Subscribers(String id, String name , String reference) {
+        this.id = id;
+        this.name = name  ;
         this.reference = reference ;
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
