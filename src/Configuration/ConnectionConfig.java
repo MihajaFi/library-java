@@ -18,12 +18,13 @@ public class ConnectionConfig {
 
     public Connection createConnection(){
         try{
+            Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(
                     this.url, this.username, this.password
             );
 
             return connection;
-        }catch(SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return null;
