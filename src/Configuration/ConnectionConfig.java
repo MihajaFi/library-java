@@ -11,9 +11,9 @@ public class ConnectionConfig {
 
 
     public ConnectionConfig() {
-        this.url = "jdbc:postgresql://localhost/library_management";
-        this.username = "postgres";
-        this.password = "12345678";
+        this.url = "jdbc:postgresql://localhost/"+System.getenv("DB_URL");
+        this.username = System.getenv("DB_USERNAME");
+        this.password = System.getenv("DB_PASSWORD");
     }
 
     public Connection createConnection(){
